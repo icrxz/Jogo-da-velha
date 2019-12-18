@@ -1,0 +1,70 @@
+.gameBoard{
+    border-radius: 2rem;
+    text-align: center;
+    background-color: #43464b;
+    color: white;
+    min-width: 25%;
+    min-height: 25%;
+}    
+
+.colTop{
+    border-top: thick solid;
+    border-top-color: white;
+}
+
+.colRig{
+    border-right: thick solid;
+    border-right-color: white;
+}
+
+.colBase, .colRig, .colTop{
+    height: 150px;
+    width: 50px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 50px;
+}
+
+.colBase:Hover, .colRig:Hover, .colTop:Hover{
+    background-color: #555555;
+}
+
+.img{
+    max-height: 150px;
+    max-width: 150px; 
+    width: 50%;
+    height: 50%;
+    border: thick solid;
+    text-align: center;
+}
+
+.logoImg{
+    float: left;
+    max-height: 75px;
+    max-width: 65px;
+    width: 100%;
+    height: 100%;
+}
+
+.p{
+    text-align: center;
+    font-size: 18px;
+    padding-top: 5px;
+}
+
+.btnPrimary{
+    text-align: center;
+    font-size: 32px;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    max-height: 75px;
+}
+
+#playerSelection{
+    overflow: hidden;
+}
+
+#roundsId{
+    font-size: 30px;
+}

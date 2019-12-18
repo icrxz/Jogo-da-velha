@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Jogo da velha | Basement</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="StyleSheet/style.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="JavaScript/gameScript.js"></script>
+
+</head>
+
+<body>
+	<!--Page Header-->
+	<div class="jumbotron-fluid text-center text-warning p-3">
+		<a href="./index.html">
+			<img src="Images/logo.jpg" class="logoImg">
+		</a>
+		<h1>TicTacToe 7 Kingdoms Edition</h1>
+	</div>
+
+	<!--NavBar-->
+	<nav class="navbar navbar-expand-lg bg-dark navbar-dark mb-3 mt-0">
+		<a class="navbar-brand" href="">Jogo da velha</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapseNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="./index.html">
+						Home
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="linkReset">
+						Reset
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<!--Players selection-->
+	<div class="container-fluid bg-dark" id="playerSelection">
+		<div class="row">
+			<div class="col-md float-right ml-5 p-5">
+				<div class="text-center">
+					<img src="Images/player1.jpg" alt="Player 1 icon" id="imagePl1" class="img rounded-circle text-success">
+				</div>
+				<div class="form-group text-light">
+					<label for="namePlayer1">Nome:</label>
+					<input type="text" class="form-control" id="namePlayer1" placeholder="Jon Snow">
+				</div>
+			</div>
+			<div class="col-sm text-light text-center float-middle">
+				<div class="row" style="height: 75px;"></div>
+				<h1>VS.</h1>
+				<button class="btn btnPrimary btn-md btn-primary mt-5" id="btnStart">Começar</button>
+			</div>
+			<div class="col-md float-left mr-5 p-5">
+				<div class="text-center">
+					<img src="Images/player2.jpg" alt="Player 2 icon" id="imagePl2" class="img rounded-circle text-danger">
+				</div>
+				<div class="form-group text-light">
+					<label for="namePlayer2">Nome:</label>
+					<input type="text" class="form-control" id="namePlayer2" placeholder="Daenerys Targaryen">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--Player Informations-->
+	<div class="container-fluid bg-light text-light" id="playerInformation">
+		<div class="row pl-5 pr-5 mb-3">
+			<div class="col-sm-5 text-center bg-success text-white rounded">
+				<h4 id="player1Time">Player 1, é sua vez</h4>
+				<img class="img rounded-circle" id="imagePlayer1">
+				<p class="p" id="NameP1"></p>
+				<div class="form-group">
+					<label for="Points1">Pontuação player 1</label>
+					<input type="text" class="form-control-plaintext text-center text-white" id="Points1" disabled>
+				</div>
+			</div>
+
+			<div class="col-sm text-center text-dark">
+				<div class="row" style="height: 125px;"></div>
+				<div class="row">
+					<div class="col-sm mb-3">
+						<h1>VS.</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm">
+						<h4>Rounds</h4>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm text-danger">
+						<p id="roundsId">0</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="text-white col-sm-5 text-center bg-danger rounded">
+				<h4 id="player2Time">Player 2</h4>
+				<img class="img rounded-circle" id="imagePlayer2">
+				<p class="p" id="NameP2"></p>
+				<div class="form-group">
+					<label for="Points2">Pontuação player 2</label>
+					<input type="text" class="form-control-plaintext text-center text-white" id="Points2" disabled>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--Game Board-->
+	<div class="container pt-3 pl-3 pr-3 gameBoard" id="gameBoard">
+		<div class="row pt-3 pl-3 pr-3" id="row1">
+			<div class="col-sm colRig" onclick="insertPlay(0,0,this)" id="row1col1">
+				<p id="row1col1Label"></p>
+			</div>
+			<div class="col-sm colRig" onclick="insertPlay(0,1,this)" id="row1col2">
+				<p id="row1col2Label"></p>
+			</div>
+			<div class="col-sm-4 colBase" onclick="insertPlay(0,2,this)" id="row1col3">
+				<p id="row1col3Label"></p>
+			</div>
+		</div>
+
+		<div class="row pl-3 pr-3" id="row2">
+			<div class="col-sm-4 colTop colRig" onclick="insertPlay(1,0,this)" id="row2col1">
+				<p id="row2col1Label"></p>
+			</div>
+			<div class="col-sm-4 colTop colRig" onclick="insertPlay(1,1,this)" id="row2col2">
+				<p id="row2col2Label"></p>
+			</div>
+			<div class="col-sm-4 colTop" onclick="insertPlay(1,2,this)" id="row2col3">
+				<p id="row2col3Label"></p>
+			</div>
+		</div>
+
+		<div class="row pl-3 pr-3 pb-3" id="row3">
+			<div class="col-sm-4 colTop colRig" onclick="insertPlay(2,0,this)" id="row3col1">
+				<p id="row3col1Label"></p>
+			</div>
+			<div class="col-sm-4 colTop colRig" onclick="insertPlay(2,1,this)" id="row3col2">
+				<p id="row3col2Label"></p>
+			</div>
+			<div class="col-sm-4 colTop" onclick="insertPlay(2,2,this)" id="row3col3">
+				<p id="row3col3Label"></p>
+			</div>
+		</div>
+	</div>
+
+	<!--Page Footer-->
+	<div class="jumbotron-fluid text-center text-white mt-4 p-4 bg-dark" id="pageFooter">
+		<h3>Created by Igor Cruz</h3>
+	</div>
+
+</body>
+
+</html>
